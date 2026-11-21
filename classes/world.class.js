@@ -38,7 +38,17 @@ class World {
   }
 
   addToMap(e) {
+    if (e.otherDirection) {
+      this.ctx.save();
+      this.ctx.translate(e.width, 0);
+      this.ctx.scale(-1, 1);
+      e.x = e.x * -1;
+    }
     this.ctx.drawImage(e.img, e.x, e.y, e.width, e.height);
+    if (e.otherDirection) {
+      e.x = e.x * -1;
+      this.ctx.restore();
+    }
   }
 
   addObjectsToMap(obj) {

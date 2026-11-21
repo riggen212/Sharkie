@@ -3,6 +3,8 @@ class Character extends MovableObject {
   y = 200;
   height = 300;
   width = 300;
+  speed = 4;
+
   CHARACTER_WALKING_IMAGES = [
     "img/1_sharkie/1_idle/1.png",
     "img/1_sharkie/1_idle/2.png",
@@ -34,12 +36,24 @@ class Character extends MovableObject {
   animate() {
     setInterval(() => {
       if (this.world.keyboard.RIGHT) {
+        this.x += this.speed;
+        this.otherDirection = false;
+      }
+
+      if (this.world.keyboard.LEFT) {
+        this.x -= this.speed;
+        this.otherDirection = true;
+      }
+    }, 1000 / 60);
+    
+    setInterval(() => {
+      if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
         let index = this.currentImage % this.CHARACTER_WALKING_IMAGES.length;
         let path = this.CHARACTER_WALKING_IMAGES[index];
         this.img = this.imageCache[path];
         this.currentImage++;
       }
-    }, 160);
+    }, 100);
   }
 
   moveUp() {}
