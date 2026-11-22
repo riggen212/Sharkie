@@ -44,17 +44,20 @@ class Character extends MovableObject {
         this.x -= this.speed;
         this.otherDirection = true;
       }
+
+      if (this.world.keyboard.UP) {
+        this.y -= this.speed;
+      }
+
+      if (this.world.keyboard.DOWN) {
+        this.y += this.speed;
+      }
     }, 1000 / 60);
     
     setInterval(() => {
-      if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
-        let index = this.currentImage % this.CHARACTER_WALKING_IMAGES.length;
-        let path = this.CHARACTER_WALKING_IMAGES[index];
-        this.img = this.imageCache[path];
-        this.currentImage++;
+      if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.UP || this.world.keyboard.DOWN) {
+        this.animateObject(this.CHARACTER_WALKING_IMAGES)
       }
     }, 100);
   }
-
-  moveUp() {}
 }
