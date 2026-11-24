@@ -35,4 +35,4 @@ class MovableObject {
       this.x -= this.speed;
     }, 1000 / 60);
   }
-}
+}s
