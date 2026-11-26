@@ -14,7 +14,7 @@ class Fish extends MovableObject {
     super().loadImage("img/2_enemy/1_puffer_fish/1_swim/1.swim1.png");
     this.loadImages(this.FISH_PUFFER_IMAGES);
     this.x = 400 + Math.random() * 500;
-    this.y = 20 + Math.random() * 220;
+    this.y = 50 + Math.random() * 220;
     this.speed = 0.3 + Math.random() * 0.5;
     
     this.animate();
