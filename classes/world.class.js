@@ -12,6 +12,7 @@ class World {
     this.keyboard = keyboard;
     this.setWorld();
     this.draw();
+    this.character.applyGravity(this);
   }
 
   draw() {
